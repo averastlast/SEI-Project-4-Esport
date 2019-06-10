@@ -10,14 +10,14 @@ class User(models.Model):
 
 class Fav_Team(models.Model):
     name = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav_teams')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav_team')
 
     def __str__(self):
         return self.name
 
 class Rival_Team(models.Model):
     name = models.CharField(max_length=255)
-    fav_team = models.ForeignKey(Fav_Team, on_delete=models.CASCADE, related_name='rival_teams')
+    fav_team = models.ForeignKey(Fav_Team, on_delete=models.CASCADE, related_name='rival_team')
 
     def __str__(self):
         return self.name

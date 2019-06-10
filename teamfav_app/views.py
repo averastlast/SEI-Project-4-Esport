@@ -2,18 +2,18 @@ from rest_framework import viewsets
 
 ##**********
 
-from .serializers import UserSerializer, Fav_teamSerializer, Rival_teamSerializer
-from .models import User, Fav_team, Rival_team
+from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer
+from .models import User, Fav_Team, Rival_Team
 
 
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class Fav_teamView(viewsets.ModelViewSet):
-    queryset = Fav_team.objects.all()
-    serializer_class = Fav_teamSerializer
+class Fav_TeamView(viewsets.ModelViewSet):
+    queryset = Fav_Team.objects.all()
+    serializer_class = Fav_TeamSerializer
 
-class Rival_teamView(viewsets.ModelViewSet):
-    queryset = Rival_team.objects.all()
-    serializer_class = Rival_teamSerializer
+class Rival_TeamView(viewsets.ModelViewSet):
+    queryset = Rival_Team.objects.all()
+    serializer_class = Rival_TeamSerializer
