@@ -6,8 +6,9 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register('artists', views.ArtistView)
-router.register('songs', views.SongView)
+router.register('users', views.UserView)
+router.register('fav_teams', views.Fav_teamView)
+router.register('rival_teams', views.Rival_teamView)
 
 
 urlpatterns = [

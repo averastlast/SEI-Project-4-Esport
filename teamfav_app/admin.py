@@ -1,5 +1,5 @@
 from django.contrib import admin
 
 # ****
-from .models import Artist, Song
-admin.site.register([Artist, Song])
+from .models import User, Fav_team, Rival_team
+admin.site.register([User, Fav_team, Rival_team])
