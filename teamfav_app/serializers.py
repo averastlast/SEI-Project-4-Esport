@@ -1,16 +1,20 @@
 # ##*******
 from rest_framework import serializers
 
-from .models import Artist, Song
+from .models import User, Fav_team, Rival_team
 
-
-class SongSerializer(serializers.ModelSerializer):
+class Fav_teamSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Song
-        fields = ('id', 'title', 'album', 'preview_url', 'artist')
+        model = Fav_team
+        fields = ('id', 'name', 'user')
 
-class ArtistSerializer(serializers.ModelSerializer):
-    songs = SongSerializer(many=True, read_only=True)
+class UserSerializer(serializers.ModelSerializer):
+    fav_teams = Fav_teamSerializer(many=False, read_only=True)
     class Meta:
-        model = Artist
-        fields = ('id', 'name', 'photo_url', 'nationality', 'songs')
+        model = User
+        fields = ('id', 'name', 'email', 'password', 'fav_team')
+
+class Rival_teamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rival_team
+        fields = ('id', 'name', 'fav_team')

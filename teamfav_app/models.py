@@ -1,20 +1,25 @@
 from django.db import models
 
-class Artist(models.Model):
+class User(models.Model):
+    user_name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user_name
+
+class Fav_Team(models.Model):
     name = models.CharField(max_length=255)
-    photo_url = models.CharField(max_length=400)
-    nationality = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav_teams')
 
     def __str__(self):
         return self.name
 
-class Song(models.Model):
-    title = models.CharField(max_length=255)
-    album = models.CharField(max_length=255)
-    preview_url = models.CharField(max_length=400)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='songs')
+class Rival_Team(models.Model):
+    name = models.CharField(max_length=255)
+    fav_team = models.ForeignKey(Fav_Team, on_delete=models.CASCADE, related_name='rival_teams')
 
     def __str__(self):
-        return self.title
+        return self.name
 
 # DONT USE SONG OR ARTIST IN DB
