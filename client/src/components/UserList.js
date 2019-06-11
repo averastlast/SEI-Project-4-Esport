@@ -5,7 +5,13 @@ import axios from 'axios';
 class UserList extends Component {
     state = {
         error: '',
-        users: []
+        allUsers: [],
+        newUser: {
+            user_name: '',
+            email: '',
+            password: 0
+        },
+        isUserFormDisplayed: false
     }
 
     componentDidMount(){
@@ -15,12 +21,47 @@ class UserList extends Component {
     fetchUsers = async () => {
         try {
             const res = await axios.get('/api/v1/users');
-            this.setState({users: res.data});
+            this.setState({allUsers: res.data});
         }
         catch (err) {
             console.log(err)
             this.setState({error: err.message})
         }
+    }
+
+    toggleUserForm = () => {
+        this.setState((state, props) => {
+            return ({ isUserFormDisplayed: !state.isUserFormDisplayed })
+        })
+    }
+
+    handleChange = (e) => {
+        const cloneNewUser = { ...this.state.newUser }
+        cloneNewUser[e.target.name] = e.target.value
+        this.setState({ newUser: cloneNewUser })
+    }
+
+    createUser = (e) => {
+        e.preventDefault()
+        axios
+            .post('/api/v1/users/', {
+                name: this.state.newUser.name,
+                address: this.state.newUser.email,
+                phoneNum: this.state.newUser.password
+            })
+            .then(res => {
+                const usersList = [...this.state.allUsers]
+                usersList.unshift(res.data)
+                this.setState({
+                    newUser: {
+                        name: '',
+                        email: '',
+                        password: 0
+                    },
+                    isUserFormDisplayed: false,
+                    allUsers: usersList
+                })
+            })
     }
 
     render() {
@@ -30,11 +71,56 @@ class UserList extends Component {
         return (
             <div>
                 <h1>All Users</h1>
-                {this.state.users.map(user => (
+
+                {
+                    this.state.allUsers.map(user => (
                     <div key={user.id}>
                         <Link to={`/user/${user.id}`} >{user.user_name}</Link>
                     </div>
-                ))}
+                    ))
+                }
+            
+
+            <button class='button' onClick={this.toggleUserForm}>Add new user</button>
+                {
+                    this.state.isUserFormDisplayed
+                        ? <form onSubmit={this.createUser}>
+                            <div><p class='subtitle'>New User Form:</p></div>
+                            <div>
+                                <label htmlFor="user_name">User Name:</label>
+                                <input
+                                    id="user_name"
+                                    type="text"
+                                    name="user_name"
+                                    onChange={this.handleChange}
+                                    value={this.state.newUser.user_name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email">Email:</label>
+                                <input
+                                    id="email"
+                                    type="text"
+                                    name="email"
+                                    onChange={this.handleChange}
+                                    value={this.state.newUser.email}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    id="password"
+                                    type="number"
+                                    name="phpasswordoneNum"
+                                    onChange={this.handleChange}
+                                    value={this.state.newUser.password}
+                                />
+                            </div>
+                            <button class='button'>Create</button>
+                        </form>
+                        : null
+                }
+
             </div>
         );
     }
