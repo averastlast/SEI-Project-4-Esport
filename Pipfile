@@ -12,6 +12,9 @@ django-extensions = "*"
 djangorestframework = "*"
 gunicorn = "*"
 django-heroku = "*"
+requests = "*"
+decouple = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.7"

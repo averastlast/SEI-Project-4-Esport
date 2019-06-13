@@ -1,7 +1,5 @@
 from rest_framework import viewsets
 
-##**********
-
 from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer
 from .models import User, Fav_Team, Rival_Team
 
