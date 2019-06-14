@@ -1,7 +1,9 @@
 from rest_framework import viewsets
+from django.http import HttpRequest, HttpResponse
 
-from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer
-from .models import User, Fav_Team, Rival_Team
+from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer, OWTeamSerializer
+from .models import User, Fav_Team, Rival_Team, OWTeam
+from .pandaAPI import pandaTeams 
 
 
 class UserView(viewsets.ModelViewSet):
@@ -15,3 +17,13 @@ class Fav_TeamView(viewsets.ModelViewSet):
 class Rival_TeamView(viewsets.ModelViewSet):
     queryset = Rival_Team.objects.all()
     serializer_class = Rival_TeamSerializer
+
+class OWTeamView(viewsets.ModelViewSet):
+    queryset = OWTeam.objects.all()
+    serializer_class = OWTeamSerializer
+
+#OWTEAMS
+
+# def teams_list(request):
+#     teams = pandaTeams
+#     return HttpResponse(teams)

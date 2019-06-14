@@ -10,5 +10,5 @@ headers = {
 
 r = requests.get('https://api.pandascore.co/ow/teams?token=' + key, headers=headers)
 
-print(r.json())
+pandaTeams = r.json()
 

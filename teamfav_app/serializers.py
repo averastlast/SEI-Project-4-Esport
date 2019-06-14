@@ -1,7 +1,16 @@
 # ##*******
 from rest_framework import serializers
 
-from .models import User, Fav_Team, Rival_Team
+from .models import User, Fav_Team, Rival_Team, OWTeam
+
+#Change Start 
+
+class OWTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OWTeam
+        fields = ('acronym', 'name', 'image_url')
+
+#Change End
 
 class Rival_TeamSerializer(serializers.ModelSerializer):
 
@@ -27,4 +36,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'user_name', 'email', 'password', 'fav_team')
-

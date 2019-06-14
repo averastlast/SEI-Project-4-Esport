@@ -23,3 +23,15 @@ class Rival_Team(models.Model):
         return self.name
 
 # DONT USE SONG OR ARTIST IN DB
+
+#CHANGE START
+
+class OWTeam(models.Model):
+    acronym = models.CharField(max_length=25)
+    # id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=25)
+    image_url = models.CharField(default = '', max_length = 512)
+
+    def __str__(self):
+        return self.name
+
