@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PandaTeamsList from './PandaTeamsList';
 
 class TeamList extends Component {
     state = {
         error: '',
         allTeams: []
     }
-
 
     componentDidMount(){
         this.fetchTeams();
@@ -24,8 +24,6 @@ class TeamList extends Component {
         }
     }
     
-    
-
     render() {
         if (this.state.error){
             return <div>{this.state.error}</div>
@@ -42,7 +40,7 @@ class TeamList extends Component {
                     ))
                 }
             
-
+<PandaTeamsList/>
             </div>
         );
     }

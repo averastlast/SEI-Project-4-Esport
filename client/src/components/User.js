@@ -4,21 +4,19 @@ import axios from 'axios';
 class User extends Component {
 
     state = {
-        userInfo: {
-            user: {
-                _id: '',
-                user_name: '',
-                email: '',
-                password: ''
+        fav_team: {
+            _id: '',
+            name: '',
+            // rival_team: {
+            //     _id: '',
+            //     name: ''
+            // }
             },
-            fav_team: {
-                _id: '',
-                name: '',
-                rival_team: {
-                    _id: '',
-                    name: ''
-                }
-            }
+        user: {
+            _id: '',
+            user_name: '',
+            email: '',
+            password: ''
         },
         redirectToHome: false,
         isEditFormDisplayed: false
@@ -43,9 +41,9 @@ class User extends Component {
             this.setState({ error: error.message })
         }
     }
-
+// MAKE REDIRECT TO HOME
     deleteUser = () => {
-        axios.delete(`/api/v1/users/${this.props.match.params.id}`).then(res => {
+        axios.delete(`/api/v1/users/${this.props.match.params.id}/`).then(res => {
             this.setState({ redirectToHome: true })
         })
     }
@@ -59,28 +57,30 @@ class User extends Component {
     //this only changes user info, does not go to team selections
 
     handleChange = (e) => {
-        const cloneUser = { ...this.state.userInfo }
+        const cloneUser = { ...this.state.user }
 
-        let inside = cloneUser.user
+        // let inside = cloneUser.user
 
-        inside[e.target.name] = e.target.value
+        cloneUser[e.target.name] = e.target.value
 
-        cloneUser.user = inside
+        // cloneUser.user = inside
 
-        this.setState({ userInfo: cloneUser })
+        this.setState({ user: cloneUser })
     }
 
     updateUser = (e) => {
         e.preventDefault()
+        console.log('trying to update')
         axios
-            .put(`/api/v1/users/${this.props.match.params.id}`, {
-                user_name: this.state.userInfo.user.user_name,
-                email: this.state.userInfo.user.email,
-                password: this.state.userInfo.user.password
+            .put(`/api/v1/users/${this.props.match.params.id}/`, {
+                user_name: this.state.user.user_name,
+                email: this.state.user.email,
+                password: this.state.user.password,
+
             })
             .then(() => {
                 this.setState({ isEditFormDisplayed: false })
-                this.getUser()
+                this.fetchUser()
             })
     }
 
@@ -89,7 +89,7 @@ class User extends Component {
             <div>
                 {/* Is this mapping right? */}
                 <h1>{this.state.user.user_name}</h1>
-                {this.state.fav_teams.map(fav_team => (
+                {/* {this.state.fav_teams.map(fav_team => (
                     <div key={fav_team.id}>
                         <h4>{fav_team.name}</h4>
                     </div>
@@ -98,7 +98,7 @@ class User extends Component {
                     <div key={rival_team.id}>
                         <h4>{rival_team.name}</h4>
                     </div>
-                ))}
+                ))} */}
 
 
 
@@ -115,7 +115,7 @@ class User extends Component {
                                     type="text"
                                     name="user_name"
                                     onChange={this.handleChange}
-                                    value={this.state.userInfo.user.user_name}
+                                    value={this.state.user.user_name}
                                 />
                             </div>
                             <div>
@@ -125,7 +125,7 @@ class User extends Component {
                                     type="text"
                                     name="email"
                                     onChange={this.handleChange}
-                                    value={this.state.emailInfo.email.email}
+                                    value={this.state.user.email}
                                 />
                             </div>
                             <div>
@@ -135,7 +135,7 @@ class User extends Component {
                                     type="number"
                                     name="password"
                                     onChange={this.handleChange}
-                                    value={this.state.userInfo.user.password}
+                                    value={this.state.user.password}
                                 />
                             </div>
                             <button class='button'>Update</button>
@@ -143,13 +143,13 @@ class User extends Component {
                         : <div class='editbox'>
                             <p class='userform'>Edit this user:</p>
                             <p>
-                                Name: {this.state.userInfo.user.user_name}
+                                Name: {this.state.user.user_name}
                             </p>
                             <p>
-                                Email: {this.state.userInfo.user.email}
+                                Email: {this.state.user.email}
                             </p>
                             <p>
-                                Password: {this.state.userInfo.user.password}
+                                Password: {this.state.user.password}
                             </p>
                             <button class='deleteButton' onClick={this.deleteUser}>Delete</button>
                         </div>

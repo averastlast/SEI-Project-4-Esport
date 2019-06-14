@@ -14,6 +14,6 @@ router.register('owteams', views.OWTeamView)
 
 
 urlpatterns = [
-    path('', include(router.urls))
-    # path('teams/', views.teams_list)
+    path('', include(router.urls)),
+    path('teams/', views.teams_list)
 ]

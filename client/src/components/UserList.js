@@ -9,7 +9,7 @@ class UserList extends Component {
         newUser: {
             user_name: '',
             email: '',
-            password: 0
+            password: ''
         },
         isUserFormDisplayed: false
     }
@@ -45,18 +45,18 @@ class UserList extends Component {
         e.preventDefault()
         axios
             .post('/api/v1/users/', {
-                name: this.state.newUser.name,
-                address: this.state.newUser.email,
-                phoneNum: this.state.newUser.password
+                user_name: this.state.newUser.user_name,
+                email: this.state.newUser.email,
+                password: this.state.newUser.password
             })
             .then(res => {
                 const usersList = [...this.state.allUsers]
                 usersList.unshift(res.data)
                 this.setState({
                     newUser: {
-                        name: '',
+                        user_name: '',
                         email: '',
-                        password: 0
+                        password: ''
                     },
                     isUserFormDisplayed: false,
                     allUsers: usersList
@@ -110,8 +110,8 @@ class UserList extends Component {
                                 <label htmlFor="password">Password:</label>
                                 <input
                                     id="password"
-                                    type="number"
-                                    name="phpasswordoneNum"
+                                    type="text"
+                                    name="password"
                                     onChange={this.handleChange}
                                     value={this.state.newUser.password}
                                 />

@@ -19,11 +19,12 @@ class Rival_TeamView(viewsets.ModelViewSet):
     serializer_class = Rival_TeamSerializer
 
 class OWTeamView(viewsets.ModelViewSet):
+    # queryset = pandaTeams
     queryset = OWTeam.objects.all()
     serializer_class = OWTeamSerializer
 
 #OWTEAMS
 
-# def teams_list(request):
-#     teams = pandaTeams
-#     return HttpResponse(teams)
+def teams_list(request):
+    teams = pandaTeams
+    return HttpResponse(teams)
