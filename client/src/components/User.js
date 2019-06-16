@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class User extends Component {
@@ -85,6 +86,9 @@ class User extends Component {
     }
 
     render() {
+        if (this.state.redirectToHome) {
+            return (<Redirect to="/" />)
+        }
         return (
             <div>
                 {/* Is this mapping right? */}

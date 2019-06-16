@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class PandaTeamsList extends Component {
 state={
-    teamInfo:{}
+    teamInfo:[]
 }
 
 
@@ -28,10 +28,25 @@ state={
     // .map
 
     render() {
+        console.log(this.state.teamInfo);
         return (
             <div>
                 im a panda PandaTeamsList
                 
+                {
+                    this.state.teamInfo.map((team, i) => {
+                        return (
+                            <div class='textunit' key={i}>
+                                <p>{team.name}</p>
+                                <p>{team.acronym}</p>
+                                <img src={team.image_url}/>
+                                <button onClick={()=>{this.post(team)} }>ADD</button>
+                            </div>
+                            
+                        )
+                    })
+                }
+
             </div>
         );
     }

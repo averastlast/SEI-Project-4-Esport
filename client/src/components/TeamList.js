@@ -7,7 +7,6 @@ class TeamList extends Component {
     state = {
         error: '',
         allTeams: [],
-        teamInfo: []
     }
 
     componentDidMount(){
@@ -25,16 +24,16 @@ class TeamList extends Component {
         }
     }
 
-    getOWTeams = async () => {
-        try {
-            const res = await axios.get(PandaTeamsList);
-            this.setState({teamInfo: res.data});
-        }
-        catch (err) {
-            console.log(err)
-            this.setState({error: err.message})
-        }
-    }
+    // getOWTeams = async () => {
+    //     try {
+    //         const res = await axios.get(PandaTeamsList);
+    //         this.setState({allTeams: res.data});
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    //         this.setState({error: err.message})
+    //     }
+    // }
 
    
     
@@ -55,20 +54,6 @@ class TeamList extends Component {
                     ))
                 } */}
             
-                {
-                    this.props.teamInfo.map((team, i) => {
-                        return (
-                            <div class='textunit' key={i}>
-                                <p>{team.name}</p>
-                                <p>{team.acronym}</p>
-                                <p>{team.image_url}</p>
-                                <button onClick={()=>{this.post(team)} }>ADD</button>
-                            </div>
-                            
-                        )
-                    })
-                }
-
 <PandaTeamsList/>
             </div>
         );
