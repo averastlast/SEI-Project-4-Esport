@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer, OWTeamSerializer
 from .models import User, Fav_Team, Rival_Team, OWTeam
 from .pandaAPI import pandaTeams 
-
+import json
 
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -27,4 +27,6 @@ class OWTeamView(viewsets.ModelViewSet):
 
 def teams_list(request):
     teams = pandaTeams
-    return HttpResponse(teams)
+    owpandadata = json.dumps(teams)
+    print(type(owpandadata))
+    return HttpResponse(owpandadata)
