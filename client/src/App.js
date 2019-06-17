@@ -25,9 +25,11 @@ class App extends Component {
                       <Route path="/user/:id" component={User}/>
                       <Route exact path="/teams/" component={TeamList}/>
                     </Switch>
-
-                    <div className='link'><Link to="/">Home</Link></div>
-                    <div className='link'><Link to="/teams/">Teams</Link></div>
+                    
+                    <div className='link'>
+                    <Link to="/">Home</Link>
+                    <Link to="/teams/">Teams</Link>
+                    </div>
                 </div>
             </Router>
         );

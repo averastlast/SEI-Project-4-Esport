@@ -74,13 +74,12 @@ class UserList extends Component {
                 <div className='subtitle'>Users List:</div>
                 {
                     this.state.allUsers.map(user => (
-                    <div key={user.id}>
+                    <div className='subtitle' key={user.id}>
                         <Link to={`/user/${user.id}`} >{user.user_name}</Link>
                     </div>
                     ))
                 }
             
-
             <button className='button' onClick={this.toggleUserForm}>Add new user</button>
                 {
                     this.state.isUserFormDisplayed

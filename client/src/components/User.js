@@ -123,89 +123,96 @@ class User extends Component {
         }
         return (
             <div>
-                <div className='title'>{this.state.user.user_name}</div>
+                <div className='usertitle'>User Profile: </div>
+                <div>
+                    {/* <button className='button' onClick={this.toggleEditForm}>Edit User Information</button> */}
+                    {
+                        this.state.isEditFormDisplayed
+                            ? <form onSubmit={this.updateUser}>
+                                <div className='formsubtitle'>Edit User Form:</div>
+                                <div>
+                                    <label htmlFor="user_name">Name:</label>
+                                    <input
+                                        id="user_name"
+                                        type="text"
+                                        name="user_name"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.user_name}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="email">Email:</label>
+                                    <input
+                                        id="email"
+                                        type="text"
+                                        name="email"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.email}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="password">Password:</label>
+                                    <input
+                                        id="password"
+                                        type="number"
+                                        name="password"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.password}
+                                    />
+                                </div>
+                                <button className='button'>Update User</button>
+                            </form>
+                            : <div className='editbox'>
+                                <div className='formsubtitle'></div>
+                                <div className='subtitle'>
+                                    Name: {this.state.user.user_name}
+                                </div>
+                                <div className='subtitle'>
+                                    Email: {this.state.user.email}
+                                </div>
+                                <div className='subtitle'>
+                                    Password: {this.state.user.password}
+                                </div>
+
+                                <div>
+                                <button className='button' onClick={this.toggleEditForm}>Edit User Information</button>
+                                <button className='deleteButton' onClick={this.deleteUser}>Delete User</button>
+                                </div>
+                            </div>
+                    }
+                </div>
+                <div className='subtitle'>Favorite Teams:</div>
                 {this.state.fav_team.map(favteam => (
+                    
                     <div key={favteam.id}>
-                        <div className='subtitle'>{favteam.name}</div>
-                        <button className='deleteButton' onClick={() => { this.deleteFavTeam(favteam.id) }}>Delete Favorite Team</button>
+                        <div className='subtitle'>Team: {favteam.name}</div>
+                        <button className='deleteButton' onClick={() => { this.deleteFavTeam(favteam.id) }}>Delete Team</button>
                     </div>
                 ))}
-            <div>
-                <button className='button' onClick={this.toggleFavTeamForm}>Add favorite team</button>
-                {
-                    this.state.isFavTeamFormDisplayed
-                        ? <form onSubmit={this.createFavTeam}>
-                            <div><p class='subtitle'>New favorite team Form:</p></div>
+                <div>
+                    <button className='button' onClick={this.toggleFavTeamForm}>Add favorite team</button>
+                    {
+                        this.state.isFavTeamFormDisplayed
+                            ? <form onSubmit={this.createFavTeam}>
+                                <div><p class='subtitle'>New favorite team Form:</p></div>
 
-                            <div>
-                                <label htmlFor="name">Team name:</label>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    name="name"
-                                    onChange={this.handleTeamChange}
-                                    value={this.state.newFavTeam.name}
-                                />
-                            </div>
+                                <div>
+                                    <label htmlFor="name">Team name:</label>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        onChange={this.handleTeamChange}
+                                        value={this.state.newFavTeam.name}
+                                    />
+                                </div>
 
-                            <button className='button'>Create Team</button>
-                        </form>
-                        : null
-                }
-        </div>
-        <div>
-                <button className='button' onClick={this.toggleEditForm}>Edit User Information</button>
-                {
-                    this.state.isEditFormDisplayed
-                        ? <form onSubmit={this.updateUser}>
-                            <div className='formsubtitle'>Edit User Form:</div>
-                            <div>
-                                <label htmlFor="user_name">Name:</label>
-                                <input
-                                    id="user_name"
-                                    type="text"
-                                    name="user_name"
-                                    onChange={this.handleChange}
-                                    value={this.state.user.user_name}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email">Email:</label>
-                                <textarea
-                                    id="email"
-                                    type="text"
-                                    name="email"
-                                    onChange={this.handleChange}
-                                    value={this.state.user.email}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="password">Password:</label>
-                                <textarea
-                                    id="password"
-                                    type="number"
-                                    name="password"
-                                    onChange={this.handleChange}
-                                    value={this.state.user.password}
-                                />
-                            </div>
-                            <button className='button'>Update User</button>
-                        </form>
-                        : <div className='editbox'>
-                            <p className='formsubtitle'>Edit this user:</p>
-                            <p>
-                                Name: {this.state.user.user_name}
-                            </p>
-                            <p>
-                                Email: {this.state.user.email}
-                            </p>
-                            <p>
-                                Password: {this.state.user.password}
-                            </p>
-                            <button className='deleteButton' onClick={this.deleteUser}>Delete User</button>
-                        </div>
-                }
-            </div>
+                                <button className='button'>Create Team</button>
+                            </form>
+                            : null
+                    }
+                </div>
+                
             </div>
         );
     }

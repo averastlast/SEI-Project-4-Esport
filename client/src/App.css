@@ -14,7 +14,22 @@ body {
 }
 
 form {
-  font-family: 'Helvetica';
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-size: 3vh;
+}
+
+input {
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-size: 3vh;
+  background: rgba(244, 145, 40, 0.568);
+  border: white;
+  padding: 1%;
+  margin: 1%;
+  /* box-shadow: none; */
+}
+
+input:focus {
+  outline: none;
 }
 
 .formsubtitle {
@@ -28,15 +43,23 @@ form {
 
 .title {
   font-family: 'noodle';
-  font-size: 300%
+  font-size: 9vh;
+}
+
+.usertitle {
+  font-family: 'noodle';
+  font-size: 9vh;
+  margin-top: 9vh;
 }
 
 .subtitle {
   font-family: 'Encode Sans Expanded', sans-serif;
+  margin: 2vh;
+  font-size: 4vh;
 }
 
 p {
-  font-size: 3vh;
+  font-size: 6vh;
 }
 
 a {
@@ -51,7 +74,10 @@ a:hover {
 
 .link {
   text-transform: uppercase;
-  font-size: 4vh;
+  font-size: 8vh;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2vh;
 }
 
 .button {
@@ -62,7 +88,6 @@ a:hover {
   box-shadow: 0 4px #B6B6BA;
   border-radius: 10%;
   padding: 1% 2%;
-  font-size: 3vh;
   margin: 5% 5%;
 }
 
@@ -80,7 +105,7 @@ a:hover {
   box-shadow: 0 4px #B6B6BA;
   border-radius: 10%;
   padding: 1% 2%;
-  font-size: 3vh;
+  font-size: 5vh;
   margin: 5% 5%;
 }
 
