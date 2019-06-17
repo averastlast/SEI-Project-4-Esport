@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:700&display=swap');
+
 @font-face {
   font-family: 'noodle';
   src: url('./components/fonts/big_noodle_titling.ttf');
 }
+
 
 body {
   background: #DFE9F7;
@@ -14,10 +17,8 @@ p {
 }
 
 
-
-
 .OW {
-  font-family: 'Helvetica';
+  font-family: 'Encode Sans Expanded', sans-serif;
   font-size: 500%
 }
 
