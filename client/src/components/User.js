@@ -5,11 +5,12 @@ import axios from 'axios';
 class User extends Component {
 
     state = {
-        fav_team: [
-            // _id: '',
-            // name: '',
-            
-        ],
+        fav_team: [],
+        newFavTeam: {
+            acronym: '',
+            name: '',
+            image_url: ''
+        },
         user: {
             _id: '',
             user_name: '',
@@ -82,6 +83,34 @@ class User extends Component {
             })
     }
 
+    // NEW
+
+    createFavTeam = (e) => {
+        e.preventDefault()
+        axios
+            .post('/api/v1/fav_teams/', {
+                acronym: this.state.newFavTeam.acronym,
+                name: this.state.newFavTeam.name,
+                image_url: this.state.newFavTeam.image_url
+            })
+            .then(res => {
+                const favteamsList = [...this.state.fav_team]
+                favteamsList.unshift(res.data)
+                this.setState({
+                    newFavTeam: {
+                        acronym: '',
+                        name: '',
+                        image_url: ''
+                    },
+                    isUserFormDisplayed: false,
+                    fav_team: favteamsList
+                })
+            })
+    }
+
+
+
+
     deleteFavTeam = (teamID) => {
         axios.delete(`/api/v1/fav_teams/${teamID}/`).then(res => {
             const userId = this.props.match.params.id;
@@ -105,7 +134,7 @@ class User extends Component {
                 ))}
                {/* <button onClick={()=>{this.deleteTeam(team.id)} }>ADD</button>  */}
 
-{/* Form to ADD AND DELETE HERE  */}
+
 
 
                 <button class='button' onClick={this.toggleEditForm}>Edit</button>

@@ -9,7 +9,6 @@ class TeamList extends Component {
         allTeams: [],
     }
 
-
     componentDidMount(){
         this.fetchTeams();
     }
@@ -29,20 +28,7 @@ class TeamList extends Component {
         axios.delete(`/api/v1/owteams/${teamID}/`).then(res => {
             this.setState({ redirectToHome: true })
         })
-    }
-
-    // getOWTeams = async () => {
-    //     try {
-    //         const res = await axios.get(PandaTeamsList);
-    //         this.setState({allTeams: res.data});
-    //     }
-    //     catch (err) {
-    //         console.log(err)
-    //         this.setState({error: err.message})
-    //     }
-    // }
-
-   
+    }   
     
     render() {
         if (this.state.error){
