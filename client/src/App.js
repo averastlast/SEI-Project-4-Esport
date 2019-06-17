@@ -10,13 +10,11 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div className="App">
+                <div>
 
                     <div>
-                        <h1>Team App</h1>
-                        <div>
-                            <div><Link to="/">All Users</Link></div>
-                        </div>
+                    <div className='title'>Overwatch: Select your Team!</div>
+                    <div className='subtitle'>Create your user profile and then select your favorite team!</div>
                     </div>
 
                     <Switch>
@@ -24,6 +22,9 @@ class App extends Component {
                       <Route path="/user/:id" component={User}/>
                       <Route exact path="/teams/" component={TeamList}/>
                     </Switch>
+
+                    <div className='link'><Link to="/">Home</Link></div>
+                    <div className='link'><Link to="/teams/">Teams</Link></div>
                 </div>
             </Router>
         );

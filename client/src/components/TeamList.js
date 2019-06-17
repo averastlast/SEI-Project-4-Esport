@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PandaTeamsList from './PandaTeamsList';
 
@@ -62,7 +61,7 @@ class TeamList extends Component {
                 <PandaTeamsList/>
 
 
-                <div><Link to="/">Home</Link></div>
+                
             </div>
         );
     }

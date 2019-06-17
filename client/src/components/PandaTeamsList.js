@@ -13,7 +13,7 @@ state={
             this.setState({ teamInfo: res.data })
         })
     }
-
+    // reload page!!
     postTeamData = (teamObj) => {
         console.log(teamObj)
         axios
@@ -22,33 +22,12 @@ state={
                 console.log(res)
             }) 
     }
-    // createOWTeams = (e) => {
-    //     axios
-    //         .post('/api/v1/owteams/', {
-    //             name: this.state.TeamList.name,
-    //             acronym: this.state.TeamList.acronym,
-    //             image_url: this.state.TeamList.image_url
-    //         })
-    //         .then(res => {
-    //             const usersList = [...this.state.TeamList]
-    //             usersList.unshift(res.data)
-    //             this.setState({
-    //                 newUser: {
-    //                     user_name: '',
-    //                     email: '',
-    //                     password: ''
-    //                 },
-    //                 isUserFormDisplayed: false,
-    //                 allUsers: usersList
-    //             })
-    //         })
-    // }
-
+    
     render() {
         console.log(this.state.teamInfo);
         return (
             <div>
-                im a panda PandaTeamsList
+                <div class='title'>OverWatch Teams Pool:</div>
                 
                 {
                     this.state.teamInfo.map((team, i) => {
