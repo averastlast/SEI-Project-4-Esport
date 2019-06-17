@@ -18,7 +18,8 @@ class User extends Component {
             password: ''
         },
         redirectToHome: false,
-        isEditFormDisplayed: false
+        isEditFormDisplayed: false,
+        isFavTeamFormDisplayed: false
     }
 
     componentDidMount() {
@@ -67,6 +68,12 @@ class User extends Component {
         this.setState({ user: cloneUser })
     }
 
+    handleTeamChange = (e) => {
+        const cloneNewFavTeam = { ...this.state.newFavTeam }
+        cloneNewFavTeam[e.target.name] = e.target.value
+        this.setState({ newFavTeam: cloneNewFavTeam })
+    }
+
     updateUser = (e) => {
         e.preventDefault()
         console.log('trying to update')
@@ -84,6 +91,12 @@ class User extends Component {
     }
 
     // NEW
+
+    toggleFavTeamForm = () => {
+        this.setState((state, props) => {
+            return ({ isFavTeamFormDisplayed: !state.isFavTeamFormDisplayed })
+        })
+    }
 
     createFavTeam = (e) => {
         e.preventDefault()
@@ -124,7 +137,6 @@ class User extends Component {
         }
         return (
             <div>
-                {/* Is this mapping right? */}
                 <h1>{this.state.user.user_name}</h1>
                 {this.state.fav_team.map(favteam => (
                     <div key={favteam.id}>
@@ -132,7 +144,49 @@ class User extends Component {
                         <button onClick={()=>{this.deleteFavTeam(favteam.id)} }>DELETE</button> 
                     </div>
                 ))}
-               {/* <button onClick={()=>{this.deleteTeam(team.id)} }>ADD</button>  */}
+              
+
+               <button class='button' onClick={this.toggleFavTeamForm}>Add favorite team</button>
+                {
+                    this.state.isFavTeamFormDisplayed
+                        ? <form onSubmit={this.createFavTeam}>
+                            <div><p class='subtitle'>New favorite team Form:</p></div>
+                            <div>
+                                <label htmlFor="acronym">Team acronym:</label>
+                                <input
+                                    id="acronym"
+                                    type="text"
+                                    name="acronym"
+                                    onChange={this.handleTeamChange}
+                                    value={this.state.newFavTeam.acronym}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="name">Team name:</label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleTeamChange}
+                                    value={this.state.newFavTeam.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="image_url">Team image:</label>
+                                <input
+                                    id="image_url"
+                                    type="text"
+                                    name="image_url"
+                                    onChange={this.handleTeamChange}
+                                    value={this.state.newFavTeam.image_url}
+                                />
+                            </div>
+                            <button class='button'>Create</button>
+                        </form>
+                        : null
+                }
+
+
 
 
 
