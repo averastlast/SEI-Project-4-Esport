@@ -7,12 +7,10 @@ class User extends Component {
     state = {
         fav_team: [],
         newFavTeam: {
-            acronym: '',
             name: '',
-            image_url: ''
         },
         user: {
-            _id: '',
+            id: '',
             user_name: '',
             email: '',
             password: ''
@@ -102,18 +100,15 @@ class User extends Component {
         e.preventDefault()
         axios
             .post('/api/v1/fav_teams/', {
-                acronym: this.state.newFavTeam.acronym,
                 name: this.state.newFavTeam.name,
-                image_url: this.state.newFavTeam.image_url
+                user: this.state.user.id
             })
             .then(res => {
                 const favteamsList = [...this.state.fav_team]
                 favteamsList.unshift(res.data)
                 this.setState({
                     newFavTeam: {
-                        acronym: '',
-                        name: '',
-                        image_url: ''
+                        name: ''
                     },
                     isUserFormDisplayed: false,
                     fav_team: favteamsList
@@ -151,7 +146,7 @@ class User extends Component {
                     this.state.isFavTeamFormDisplayed
                         ? <form onSubmit={this.createFavTeam}>
                             <div><p class='subtitle'>New favorite team Form:</p></div>
-                            <div>
+                            {/* <div>
                                 <label htmlFor="acronym">Team acronym:</label>
                                 <input
                                     id="acronym"
@@ -160,7 +155,7 @@ class User extends Component {
                                     onChange={this.handleTeamChange}
                                     value={this.state.newFavTeam.acronym}
                                 />
-                            </div>
+                            </div> */}
                             <div>
                                 <label htmlFor="name">Team name:</label>
                                 <input
@@ -171,7 +166,7 @@ class User extends Component {
                                     value={this.state.newFavTeam.name}
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <label htmlFor="image_url">Team image:</label>
                                 <input
                                     id="image_url"
@@ -180,7 +175,7 @@ class User extends Component {
                                     onChange={this.handleTeamChange}
                                     value={this.state.newFavTeam.image_url}
                                 />
-                            </div>
+                            </div> */}
                             <button class='button'>Create</button>
                         </form>
                         : null
