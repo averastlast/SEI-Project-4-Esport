@@ -9,6 +9,7 @@ class TeamList extends Component {
         allTeams: [],
     }
 
+
     componentDidMount(){
         this.fetchTeams();
     }
@@ -22,6 +23,12 @@ class TeamList extends Component {
             console.log(err)
             this.setState({error: err.message})
         }
+    }
+
+    deleteTeam = (teamID) => {
+        axios.delete(`/api/v1/owteams/${teamID}/`).then(res => {
+            this.setState({ redirectToHome: true })
+        })
     }
 
     // getOWTeams = async () => {
@@ -44,17 +51,32 @@ class TeamList extends Component {
         return (
             <div>
                 <h1>All Teams</h1>
-                {this.props.teamInfo}
+                <p>Pick your favorite</p>
+                <div>
+                TEAMTEAM
+                
+                {
+                    this.state.allTeams.map((team, i) => {
+                        return (
+                            <div class='textunit' key={i}>
+                                <p>{team.name}</p>
+                                <p>{team.acronym}</p>
+                                <img src={team.image_url}/>
+                                <button onClick={()=>{this.deleteTeam(team.id)} }>DELETE</button> 
+                            </div>
+                            
+                        )
+                    })
+                }
 
-                {/* {
-                    this.state.allTeams.map(team => (
-                    <div key={team.id}>
-                        <Link to={`/owteams/${team.id}`} >{team.name}</Link>
-                    </div>
-                    ))
-                } */}
-            
-<PandaTeamsList/>
+            </div>
+
+
+
+                <PandaTeamsList/>
+
+
+
             </div>
         );
     }

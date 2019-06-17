@@ -8,7 +8,7 @@ from .models import User, Fav_Team, Rival_Team, OWTeam
 class OWTeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = OWTeam
-        fields = ('acronym', 'name', 'image_url')
+        fields = ('id', 'acronym', 'name', 'image_url')
 
 #Change End
 

@@ -42,7 +42,7 @@ class User extends Component {
             this.setState({ error: error.message })
         }
     }
-// MAKE REDIRECT TO HOME
+
     deleteUser = () => {
         axios.delete(`/api/v1/users/${this.props.match.params.id}/`).then(res => {
             this.setState({ redirectToHome: true })
