@@ -5,7 +5,7 @@ import PandaTeamsList from './PandaTeamsList';
 class TeamList extends Component {
     state = {
         error: '',
-        allTeams: [],
+        allTeams: []
     }
 
     componentDidMount(){
@@ -25,10 +25,12 @@ class TeamList extends Component {
 
     deleteTeam = (teamID) => {
         axios.delete(`/api/v1/owteams/${teamID}/`).then(res => {
-            this.setState({ redirectToHome: true })
+            window.location.reload()
         })
     }   
     
+ // NEED TO WRITE reload page!!
+
     render() {
         if (this.state.error){
             return <div>{this.state.error}</div>
