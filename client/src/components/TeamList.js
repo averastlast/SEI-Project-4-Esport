@@ -42,7 +42,7 @@ class TeamList extends Component {
                 {
                     this.state.allTeams.map((team, i) => {
                         return (
-                            <div class='textunit' key={i}>
+                            <div className='textunit' key={i}>
                                 <p>{team.name}</p>
                                 <p>{team.acronym}</p>
                                 <img src={team.image_url} alt="OW team logo"/>

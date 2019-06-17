@@ -26,8 +26,8 @@ state={
         console.log(this.state.teamInfo);
         return (
             <div>
-                <div class='title'>OverWatch Teams Pool:</div>
-                
+                <div className='title'>OverWatch Teams Pool:</div>
+        
                 {
                     this.state.teamInfo.map((team, i) => {
                         return (
