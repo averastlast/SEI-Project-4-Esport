@@ -1,4 +1,28 @@
-.App {
+@font-face {
+  font-family: 'noodle';
+  src: url('./components/fonts/big_noodle_titling.ttf');
+}
+
+body {
+  background: #DFE9F7;
+  color: #100F0D;
+  font-family: 'noodle';
+}
+
+p {
+  font-family: 'Helvetica';
+}
+
+
+
+
+.OW {
+  font-family: 'Helvetica';
+  font-size: 500%
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -21,13 +45,5 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

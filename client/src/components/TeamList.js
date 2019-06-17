@@ -62,7 +62,7 @@ class TeamList extends Component {
                 <PandaTeamsList/>
 
 
-
+                <div><Link to="/">Home</Link></div>
             </div>
         );
     }
