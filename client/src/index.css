@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./components/appimg/billy-huynh-327754-unsplash.jpg");
+  background-size: auto;
+  background-repeat: repeat-y;
 }
 
 code {

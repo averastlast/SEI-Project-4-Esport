@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 class UserList extends Component {
     state = {
         error: '',
@@ -70,7 +71,7 @@ class UserList extends Component {
         }
         return (
             <div>
-                
+                <div className='subtitle'>Users List:</div>
                 {
                     this.state.allUsers.map(user => (
                     <div key={user.id}>

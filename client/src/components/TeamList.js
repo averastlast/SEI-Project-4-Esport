@@ -48,7 +48,7 @@ class TeamList extends Component {
                                 <p>{team.name}</p>
                                 <p>{team.acronym}</p>
                                 <img src={team.image_url} alt="OW team logo"/>
-                                <button className='deleteButton' onClick={()=>{this.deleteTeam(team.id)} }>DELETE</button> 
+                                <button className='deleteButton' onClick={()=>{this.deleteTeam(team.id)} }>Delete Favorite Team</button> 
                             </div>
                             
                         )

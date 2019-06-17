@@ -104,7 +104,7 @@ class User extends Component {
                     newFavTeam: {
                         name: ''
                     },
-                    isUserFormDisplayed: false,
+                    isFavTeamFormDisplayed: false,
                     fav_team: favteamsList
                 })
             })
@@ -127,7 +127,7 @@ class User extends Component {
                 {this.state.fav_team.map(favteam => (
                     <div key={favteam.id}>
                         <div className='subtitle'>{favteam.name}</div>
-                        <button className='deleteButton' onClick={() => { this.deleteFavTeam(favteam.id) }}>DELETE</button>
+                        <button className='deleteButton' onClick={() => { this.deleteFavTeam(favteam.id) }}>Delete Favorite Team</button>
                     </div>
                 ))}
             <div>
@@ -148,13 +148,13 @@ class User extends Component {
                                 />
                             </div>
 
-                            <button className='button'>Create</button>
+                            <button className='button'>Create Team</button>
                         </form>
                         : null
                 }
         </div>
         <div>
-                <button className='button' onClick={this.toggleEditForm}>Edit</button>
+                <button className='button' onClick={this.toggleEditForm}>Edit User Information</button>
                 {
                     this.state.isEditFormDisplayed
                         ? <form onSubmit={this.updateUser}>
@@ -189,7 +189,7 @@ class User extends Component {
                                     value={this.state.user.password}
                                 />
                             </div>
-                            <button className='button'>Update</button>
+                            <button className='button'>Update User</button>
                         </form>
                         : <div className='editbox'>
                             <p className='formsubtitle'>Edit this user:</p>
@@ -202,7 +202,7 @@ class User extends Component {
                             <p>
                                 Password: {this.state.user.password}
                             </p>
-                            <button className='deleteButton' onClick={this.deleteUser}>Delete</button>
+                            <button className='deleteButton' onClick={this.deleteUser}>Delete User</button>
                         </div>
                 }
             </div>
