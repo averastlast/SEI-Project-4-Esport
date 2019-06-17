@@ -5,14 +5,11 @@ import axios from 'axios';
 class User extends Component {
 
     state = {
-        fav_team: {
-            _id: '',
-            name: '',
-            // rival_team: {
-            //     _id: '',
-            //     name: ''
-            // }
-            },
+        fav_team: [
+            // _id: '',
+            // name: '',
+            
+        ],
         user: {
             _id: '',
             user_name: '',
@@ -85,6 +82,13 @@ class User extends Component {
             })
     }
 
+    deleteFavTeam = (teamID) => {
+        axios.delete(`/api/v1/fav_teams/${teamID}/`).then(res => {
+            const userId = this.props.match.params.id;
+            this.fetchUser(userId)
+        })
+    }
+
     render() {
         if (this.state.redirectToHome) {
             return (<Redirect to="/" />)
@@ -93,18 +97,15 @@ class User extends Component {
             <div>
                 {/* Is this mapping right? */}
                 <h1>{this.state.user.user_name}</h1>
-                {/* {this.state.fav_teams.map(fav_team => (
-                    <div key={fav_team.id}>
-                        <h4>{fav_team.name}</h4>
+                {this.state.fav_team.map(favteam => (
+                    <div key={favteam.id}>
+                        <h4>{favteam.name}</h4>
+                        <button onClick={()=>{this.deleteFavTeam(favteam.id)} }>DELETE</button> 
                     </div>
                 ))}
-                {this.state.rival_teams.map(rival_team => (
-                    <div key={rival_team.id}>
-                        <h4>{rival_team.name}</h4>
-                    </div>
-                ))} */}
+               {/* <button onClick={()=>{this.deleteTeam(team.id)} }>ADD</button>  */}
 
-
+{/* Form to ADD AND DELETE HERE  */}
 
 
                 <button class='button' onClick={this.toggleEditForm}>Edit</button>
