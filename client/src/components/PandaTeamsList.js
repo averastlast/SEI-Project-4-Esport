@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TeamList from './TeamList';
 import axios from 'axios'
 
 class PandaTeamsList extends Component {
@@ -35,7 +34,7 @@ state={
                             <div class='textunit' key={i}>
                                 <p>{team.name}</p>
                                 <p>{team.acronym}</p>
-                                <img src={team.image_url}/>
+                                <img src={team.image_url} alt="OW team logo"/>
                                 <button onClick={()=>{this.postTeamData(team)} }>ADD</button>
                             </div>
                             

@@ -38,7 +38,6 @@ class TeamList extends Component {
                 <h1>All Teams</h1>
                 <p>Pick your favorite</p>
                 <div>
-                TEAMTEAM
                 
                 {
                     this.state.allTeams.map((team, i) => {
@@ -46,8 +45,8 @@ class TeamList extends Component {
                             <div class='textunit' key={i}>
                                 <p>{team.name}</p>
                                 <p>{team.acronym}</p>
-                                <img src={team.image_url}/>
-                                <button onClick={()=>{this.deleteTeam(team.id)} }>DELETE</button> 
+                                <img src={team.image_url} alt="OW team logo"/>
+                                <button className='deleteButton' onClick={()=>{this.deleteTeam(team.id)} }>DELETE</button> 
                             </div>
                             
                         )

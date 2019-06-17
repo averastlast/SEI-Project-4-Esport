@@ -56,13 +56,9 @@ class User extends Component {
 
     handleChange = (e) => {
         const cloneUser = { ...this.state.user }
-
         // let inside = cloneUser.user
-
         cloneUser[e.target.name] = e.target.value
-
         // cloneUser.user = inside
-
         this.setState({ user: cloneUser })
     }
 
@@ -87,8 +83,6 @@ class User extends Component {
                 this.fetchUser()
             })
     }
-
-    // NEW
 
     toggleFavTeamForm = () => {
         this.setState((state, props) => {
@@ -116,9 +110,6 @@ class User extends Component {
             })
     }
 
-
-
-
     deleteFavTeam = (teamID) => {
         axios.delete(`/api/v1/fav_teams/${teamID}/`).then(res => {
             const userId = this.props.match.params.id;
@@ -132,30 +123,20 @@ class User extends Component {
         }
         return (
             <div>
-                <h1>{this.state.user.user_name}</h1>
+                <div className='title'>{this.state.user.user_name}</div>
                 {this.state.fav_team.map(favteam => (
                     <div key={favteam.id}>
-                        <h4>{favteam.name}</h4>
-                        <button onClick={()=>{this.deleteFavTeam(favteam.id)} }>DELETE</button> 
+                        <div className='subtitle'>{favteam.name}</div>
+                        <button className='deleteButton' onClick={() => { this.deleteFavTeam(favteam.id) }}>DELETE</button>
                     </div>
                 ))}
-              
-
-               <button class='button' onClick={this.toggleFavTeamForm}>Add favorite team</button>
+            <div>
+                <button className='button' onClick={this.toggleFavTeamForm}>Add favorite team</button>
                 {
                     this.state.isFavTeamFormDisplayed
                         ? <form onSubmit={this.createFavTeam}>
                             <div><p class='subtitle'>New favorite team Form:</p></div>
-                            {/* <div>
-                                <label htmlFor="acronym">Team acronym:</label>
-                                <input
-                                    id="acronym"
-                                    type="text"
-                                    name="acronym"
-                                    onChange={this.handleTeamChange}
-                                    value={this.state.newFavTeam.acronym}
-                                />
-                            </div> */}
+
                             <div>
                                 <label htmlFor="name">Team name:</label>
                                 <input
@@ -166,31 +147,18 @@ class User extends Component {
                                     value={this.state.newFavTeam.name}
                                 />
                             </div>
-                            {/* <div>
-                                <label htmlFor="image_url">Team image:</label>
-                                <input
-                                    id="image_url"
-                                    type="text"
-                                    name="image_url"
-                                    onChange={this.handleTeamChange}
-                                    value={this.state.newFavTeam.image_url}
-                                />
-                            </div> */}
-                            <button class='button'>Create</button>
+
+                            <button className='button'>Create</button>
                         </form>
                         : null
                 }
-
-
-
-
-
-
-                <button class='button' onClick={this.toggleEditForm}>Edit</button>
+        </div>
+        <div>
+                <button className='button' onClick={this.toggleEditForm}>Edit</button>
                 {
                     this.state.isEditFormDisplayed
                         ? <form onSubmit={this.updateUser}>
-                            <p class='userform'>Edit User Form:</p>
+                            <div className='formsubtitle'>Edit User Form:</div>
                             <div>
                                 <label htmlFor="user_name">Name:</label>
                                 <input
@@ -221,10 +189,10 @@ class User extends Component {
                                     value={this.state.user.password}
                                 />
                             </div>
-                            <button class='button'>Update</button>
+                            <button className='button'>Update</button>
                         </form>
-                        : <div class='editbox'>
-                            <p class='userform'>Edit this user:</p>
+                        : <div className='editbox'>
+                            <p className='formsubtitle'>Edit this user:</p>
                             <p>
                                 Name: {this.state.user.user_name}
                             </p>
@@ -234,12 +202,10 @@ class User extends Component {
                             <p>
                                 Password: {this.state.user.password}
                             </p>
-                            <button class='deleteButton' onClick={this.deleteUser}>Delete</button>
+                            <button className='deleteButton' onClick={this.deleteUser}>Delete</button>
                         </div>
                 }
-
-
-
+            </div>
             </div>
         );
     }

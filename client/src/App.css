@@ -10,7 +10,19 @@ body {
   background: #DFE9F7;
   color: #100F0D;
   font-family: 'Helvetica';
-  text-align: center;
+}
+
+form {
+  font-family: 'Helvetica';
+}
+
+.formsubtitle {
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-size: 4vh;
+}
+
+.editbox {
+  font-family: 'Helvetica';
 }
 
 .title {
@@ -39,4 +51,40 @@ a:hover {
 .link {
   text-transform: uppercase;
   font-size: 4vh;
+}
+
+.button {
+  font-family: 'noodle';
+  font-size: 5vh;
+  color: #100F0D;
+  background-color: #F49128;
+  box-shadow: 0 4px #B6B6BA;
+  border-radius: 10%;
+  padding: 1% 2%;
+  font-size: 3vh;
+  margin: 5% 5%;
+}
+
+.button:hover {
+  background-color: rgb(252, 218, 124);
+  box-shadow: 0 4px rgb(190, 182, 103);
+}
+
+.deleteButton {
+  font-family: 'noodle';
+  border: none;
+  font-size: 5vh;
+  color: white;
+  background-color: rgb(244, 40, 40);
+  box-shadow: 0 4px #B6B6BA;
+  border-radius: 10%;
+  padding: 1% 2%;
+  font-size: 3vh;
+  margin: 5% 5%;
+}
+
+.deleteButton:hover {
+  background-color: rgb(148, 15, 3);
+  border: none;
+  box-shadow: 0 4px rgb(175, 73, 73);
 }
