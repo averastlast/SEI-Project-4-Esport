@@ -21,7 +21,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.FrontendAppView.as_view()), #New URL for the index route
-    re_path('^*$', views.FrontendAppView.as_view()),
-    path('api/v1/', include('teamfav_app.urls'))
+    path('', views.FrontendAppView.as_view()), #New URL for the index route
+    path('api/v1/', include('teamfav_app.urls')),
+    re_path(r'^.*$', views.FrontendAppView.as_view())
 ]
+
