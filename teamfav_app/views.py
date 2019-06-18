@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from django.http import HttpRequest, HttpResponse
 
-from .serializers import UserSerializer, Fav_TeamSerializer, Rival_TeamSerializer, OWTeamSerializer
-from .models import User, Fav_Team, Rival_Team, OWTeam
+from .serializers import UserSerializer, Fav_TeamSerializer, OWTeamSerializer
+from .models import User, Fav_Team, OWTeam
 from .pandaAPI import pandaTeams 
 import json
 
