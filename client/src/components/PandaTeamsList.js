@@ -13,7 +13,7 @@ class PandaTeamsList extends Component {
             this.setState({ teamInfo: res.data })
         })
     }
-   
+
     postTeamData = (teamObj) => {
         console.log(teamObj)
         axios
@@ -33,21 +33,25 @@ class PandaTeamsList extends Component {
     render() {
         return (
             <div>
-                <div className='title'>OverWatch Teams Pool:</div>
+                <div className='title'>Pick more OverWatch teams!</div>
 
                 <div>
-                    <button className='button' onClick={this.togglePandaTeamData}>See OW Teams</button>
+                    <button className='button' onClick={this.togglePandaTeamData}>See Teams</button>
                     {
                         this.state.isPandaTeamDataDisplayed
                             ? <div>
                                 {
                                     this.state.teamInfo.map((team, i) => {
                                         return (
-                                            <div class='textunit' key={i}>
-                                                <p>Team Name:{team.name}</p>
-                                                <p>Team Acronym:{team.acronym}</p>
-                                                <p>Team logo:</p><img src={team.image_url} alt="OW team logo" />
-                                                <button onClick={() => { this.postTeamData(team) }}>ADD</button>
+                                            <div className='teams' key={i}>
+                                                <img className='logoimg' src={team.image_url} alt="OW team logo" />
+                                                <div className='teaminfobox'>
+                                                    <div>Team Profile:</div>
+                                                    <p>{team.name}</p>
+                                                    <p>Acronym:{team.acronym}</p>
+                                                    {/* Need to add a failsafe code for if there is no data for this field, if empty will not add team */}
+                                                    <button className='button' onClick={() => { this.postTeamData(team) }}>Add Favorite Team</button>
+                                                </div>
                                             </div>
 
                                         )

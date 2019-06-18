@@ -8,18 +8,18 @@ class TeamList extends Component {
         allTeams: []
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.fetchTeams();
     }
 
     fetchTeams = async () => {
         try {
             const res = await axios.get('/api/v1/owteams');
-            this.setState({allTeams: res.data});
+            this.setState({ allTeams: res.data });
         }
         catch (err) {
             console.log(err)
-            this.setState({error: err.message})
+            this.setState({ error: err.message })
         }
     }
 
@@ -27,42 +27,44 @@ class TeamList extends Component {
         axios.delete(`/api/v1/owteams/${teamID}/`).then(res => {
             window.location.reload()
         })
-    }   
-    
- // NEED TO WRITE reload page!!
+    }
+
+    // NEED TO WRITE reload page!!
 
     render() {
-        if (this.state.error){
+        if (this.state.error) {
             return <div>{this.state.error}</div>
         }
         return (
             <div>
-                <h1>All Teams</h1>
-                <p>Pick your favorite</p>
+                <div className='title'>Favorite OW Teams</div>
+
                 <div>
-                
-                {
-                    this.state.allTeams.map((team, i) => {
-                        return (
-                            <div className='textunit' key={i}>
-                                <p>{team.name}</p>
-                                <p>{team.acronym}</p>
-                                <img src={team.image_url} alt="OW team logo"/>
-                                <button className='deleteButton' onClick={()=>{this.deleteTeam(team.id)} }>Delete Favorite Team</button> 
-                            </div>
-                            
-                        )
-                    })
-                }
 
-            </div>
+                    {
+                        this.state.allTeams.map((team, i) => {
+                            return (
+                                <div className='teams' key={i}>
+                                    <img className='logoimg' src={team.image_url} alt="OW team logo" />
+                                    <div className='teaminfobox'>
+                                        <p>Name: {team.name}</p>
+                                        <p>Acronym: {team.acronym}</p>
+
+                                        <button className='deleteButton' onClick={() => { this.deleteTeam(team.id) }}>Delete Favorite Team</button>
+                                    </div>
+                                </div>
+
+                            )
+                        })
+                    }
+
+                </div>
+
+
+                <PandaTeamsList />
 
 
 
-                <PandaTeamsList/>
-
-
-                
             </div>
         );
     }

@@ -154,7 +154,7 @@ class User extends Component {
                                     <label htmlFor="password">Password:</label>
                                     <input
                                         id="password"
-                                        type="number"
+                                        type="text"
                                         name="password"
                                         onChange={this.handleChange}
                                         value={this.state.user.password}
