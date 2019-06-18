@@ -65,5 +65,5 @@ class PandaTeamsList extends Component {
         );
     }
 }
-
+// Change test
 export default PandaTeamsList;
