@@ -27,7 +27,7 @@ class Fav_Team(models.Model):
 #CHANGE START
 
 class OWTeam(models.Model):
-    acronym = models.CharField(max_length=25)
+    acronym = models.CharField(max_length=25, blank=True)
     # id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=25)
     image_url = models.CharField(default = '', max_length = 512)

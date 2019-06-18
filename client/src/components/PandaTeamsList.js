@@ -15,6 +15,7 @@ class PandaTeamsList extends Component {
     }
 
     postTeamData = (teamObj) => {
+        teamObj.acronym = teamObj.acronym || '';
         console.log(teamObj)
         axios
             .post('/api/v1/owteams/', teamObj)
