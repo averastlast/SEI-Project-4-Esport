@@ -14,9 +14,9 @@ class Fav_TeamView(viewsets.ModelViewSet):
     queryset = Fav_Team.objects.all()
     serializer_class = Fav_TeamSerializer
 
-class Rival_TeamView(viewsets.ModelViewSet):
-    queryset = Rival_Team.objects.all()
-    serializer_class = Rival_TeamSerializer
+# class Rival_TeamView(viewsets.ModelViewSet):
+#     queryset = Rival_Team.objects.all()
+#     serializer_class = Rival_TeamSerializer
 
 class OWTeamView(viewsets.ModelViewSet):
     # queryset = pandaTeams

@@ -15,12 +15,12 @@ class Fav_Team(models.Model):
     def __str__(self):
         return self.name
 
-class Rival_Team(models.Model):
-    name = models.CharField(max_length=255)
-    fav_team = models.ForeignKey(Fav_Team, on_delete=models.CASCADE, related_name='rival_team')
+# class Rival_Team(models.Model):
+#     name = models.CharField(max_length=255)
+#     fav_team = models.ForeignKey(Fav_Team, on_delete=models.CASCADE, related_name='rival_team')
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 # DONT USE SONG OR ARTIST IN DB
 

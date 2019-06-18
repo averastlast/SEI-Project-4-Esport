@@ -12,11 +12,11 @@ class OWTeamSerializer(serializers.ModelSerializer):
 
 #Change End
 
-class Rival_TeamSerializer(serializers.ModelSerializer):
+# class Rival_TeamSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Rival_Team
-        fields = ('id', 'name', 'fav_team')
+#     class Meta:
+#         model = Rival_Team
+#         fields = ('id', 'name', 'fav_team')
         
 class Fav_TeamSerializer(serializers.ModelSerializer):
     rival_team = Rival_TeamSerializer(
