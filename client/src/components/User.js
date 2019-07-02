@@ -27,7 +27,7 @@ class User extends Component {
 
     fetchUser = async (userId) => {
         try {
-            const userResponse = await axios.get(`/api/v1/users/${userId}`)
+            const userResponse = await axios.get(`/api/v1/users/${userId}/`)
             this.setState({
                 user: userResponse.data,
                 fav_team: userResponse.data.fav_team,
