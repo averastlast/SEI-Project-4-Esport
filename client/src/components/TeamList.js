@@ -14,7 +14,7 @@ class TeamList extends Component {
 
     fetchTeams = async () => {
         try {
-            const res = await axios.get('/api/v1/owteams');
+            const res = await axios.get('/api/v1/owteams/');
             this.setState({ allTeams: res.data });
         }
         catch (err) {

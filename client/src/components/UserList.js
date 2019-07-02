@@ -21,7 +21,7 @@ class UserList extends Component {
 
     fetchUsers = async () => {
         try {
-            const res = await axios.get('/api/v1/users');
+            const res = await axios.get('/api/v1/users/');
             this.setState({allUsers: res.data});
         }
         catch (err) {
@@ -80,6 +80,7 @@ class UserList extends Component {
                     ))
                 }
             
+
             <button className='button' onClick={this.toggleUserForm}>Add new user</button>
                 {
                     this.state.isUserFormDisplayed
